@@ -1,0 +1,1 @@
+from .nfcSocial import app

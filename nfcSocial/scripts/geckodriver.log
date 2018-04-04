@@ -1,0 +1,15 @@
+1522417566832	geckodriver	INFO	geckodriver 0.20.0
+1522417566840	geckodriver	INFO	Listening on 127.0.0.1:34675
+1522417567901	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.DKVWpi48oQTU"
+1522417569371	Marionette	INFO	Listening on port 2828
+[Child 10856] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.6.0/firefox-52.6.0esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 10856] ###!!! ABORT: Aborting on channel error.: file /builddir/build/BUILD/firefox-52.6.0/firefox-52.6.0esr/ipc/glue/MessageChannel.cpp, line 2152
+1522417674419	geckodriver	INFO	geckodriver 0.20.0
+1522417674427	geckodriver	INFO	Listening on 127.0.0.1:50582
+1522417675475	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.nIm7f7tXQ9Wz"
+1522417676717	Marionette	INFO	Listening on port 2828
+/usr/lib64/firefox/plugin-container: Fatal IO error 11 (Resource temporarily unavailable) on X server :1009.
+1522418190987	geckodriver	INFO	geckodriver 0.20.0
+1522418190995	geckodriver	INFO	Listening on 127.0.0.1:33077
+1522418192061	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ESfwCB5OAyyi"
+Error: cannot open display: :99

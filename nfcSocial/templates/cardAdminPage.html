@@ -1,0 +1,33 @@
+{% extends "headers.html" %}
+{% block content %}
+<header class="masthead">
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-heading"> {{ cardID }} </div>
+            <form  method="POST">
+                <div class="col-md-6 col-md-offset-10" style="margin: 0px auto">
+		<img class="rounded-circle img-fluid" src="{{ imageUrl }}" alt="Problem loading image" >
+		  <br/>
+		  <br/>
+                <div class="form-group">
+                    <input name="password" class="form-control" id="password" type="password" placeholder="Card password *" required data-validation-required-message="Please enter the card password received in email password">
+                    <p class="help-block text-danger"></p>
+                  </div>
+
+                <div class="clearfix"></div>
+                  <div id="success"></div>
+		  <br/>
+                  <button id="loginButton" class="btn btn-primary btn-xl text-uppercase" type="submit">{{ buttonText }}</button>
+              </div>
+            </form>
+</div>
+
+        </div>
+      </div>
+    </header>
+
+
+
+
+{% endblock %}
+

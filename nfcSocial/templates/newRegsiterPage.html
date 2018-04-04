@@ -1,0 +1,25 @@
+{% extends "headers.html" %}
+{% block content %}
+
+<header class="masthead">
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-heading"> New Registration </div>
+			
+                <div class="col-md-6" style="margin: 0px auto">
+		  {% for avail in types %}
+		  <br>
+                  <a id="{{ avail.scheme }}Button" class="btn btn-primary btn-xl text-uppercase" style="width: 250px;" href="/{{ avail.scheme }}/newRegistration" >{{ avail.text }}</a>
+		  <br>
+		  {% endfor %}
+		</div>
+
+        </div>
+      </div>
+    </header>
+
+
+
+
+{% endblock %}
+

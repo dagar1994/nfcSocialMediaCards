@@ -1,0 +1,24 @@
+{% extends "headers.html" %}
+{% block content %}
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+	  <img class="rounded-circle img-fluid" src="{{ imageUrl }}" alt="Problem loading image" onerror="this.onerror=null;this.src='/uploads/cloud-2044823_640.png';" > 
+	  </br>
+	  </br>
+          <div class="intro-lead-in">{{ name }} </div>
+          <div class="intro-heading text-uppercase" style="word-wrap: break-word; font-size: 36px;">{{ description }}</div>
+  {% if "dual" in utype %}
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="width: 250px;" href="{{ appLink }}">  Open in App  </a>
+	  </br>
+	  </br>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="width: 250px;" href="{{ browserLink }}">Open in Browser</a>
+  {% else %}
+	  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="width: 250px;" href="{{ browserLink }}">{{ buttonText  }}</a>
+  {% endif %}
+
+        </div>
+      </div>
+    </header>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+MANIFEST.in
+nfcSocial/__init__.py
+nfcSocial/nfcSocial.py
+nfcSocial.egg-info/PKG-INFO
+nfcSocial.egg-info/SOURCES.txt
+nfcSocial.egg-info/dependency_links.txt
+nfcSocial.egg-info/requires.txt
+nfcSocial.egg-info/top_level.txt

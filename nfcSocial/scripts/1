@@ -1,0 +1,14 @@
+def f(a,b=1):
+	if a ==1:
+		try:
+			return b
+		except:
+			return 1
+	else:
+		try:
+			b = b*a
+		except: 
+			b = a
+		f(a-1,b=b)
+print f(10)
+

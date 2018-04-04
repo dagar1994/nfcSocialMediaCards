@@ -1,0 +1,164 @@
+{% extends "headers.html" %}
+{% block content %}
+
+<script>
+window.onload = function () {
+
+CanvasJS.addColorSet("greenShades",
+                [//colorSet Array
+
+                "#2F4F4F",
+                "#008080",
+                "#2E8B57",
+                "#3CB371",
+                "#90EE90"                
+                ]);
+
+var chart1 = new CanvasJS.Chart("chartContainer1", {
+	animationEnabled: true,
+	backgroundColor : "#e0e0eb",
+	title:{
+		colorSet: "greenShades",
+	},
+	data: [{
+		type: "doughnut",
+		startAngle: 60,
+		//innerRadius: 60,
+		indexLabelFontSize: 17,
+		indexLabel: "{label} - #percent%",
+		toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+		dataPoints: 
+			{{ usageData | safe }}
+	}]	
+});
+chart1.render();
+
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	xValueType: "dateTime",
+	backgroundColor : "#e0e0eb",
+	title:{
+		text: ""
+	},
+	axisY:{
+		includeZero: false
+	},
+	data: [{        
+		type: "line",       
+		lineThickness: 5,
+		dataPoints:[
+				{% for item in sendData %}
+					{ x: new Date("{{item['x'] | safe }}"), y: {{ item['y'] | safe }}},
+		                {% endfor %}			   ]
+	}]
+});
+chart.render();
+
+}
+</script>
+
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+	<div class="intro-heading text-uppercase" style=""> Card Statistics </div>
+
+<div class="row" >
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info" >
+                            <h3 class="box-title">Today</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"><canvas style="display: inline-block; width: 67px; height: 30px; vertical-align: top;" width="67" height="30"></canvas></div>
+                                </li>
+			        <h1 class="box-data" >{{ returnData['hitsTwentyFourHour'] | safe }}</h3>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info" >
+                            <h3 class="box-title">Last Week</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"><canvas style="display: inline-block; width: 67px; height: 30px; vertical-align: top;" width="67" height="30"></canvas></div>
+                                </li>
+			        <h1 class="box-data">{{ returnData['hitsSevenDays'] | safe }}</h3>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info" >
+                            <h3 class="box-title">Last Month</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"><canvas style="display: inline-block; width: 67px; height: 30px; vertical-align: top;" width="67" height="30"></canvas></div>
+                                </li>
+			        <h1 class="box-data">{{ returnData['hitsThirtyDays'] | safe }}</h3>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+<div class="row" >
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info" >
+                            <h3 class="box-title">From Android</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"><canvas style="display: inline-block; width: 67px; height: 30px; vertical-align: top;" width="67" height="30"></canvas></div>
+                                </li>
+			        <h1 class="box-data">{{ returnData['hitsAndroid'] | safe }}</h3>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info" >
+                            <h3 class="box-title">From iPhone</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"><canvas style="display: inline-block; width: 67px; height: 30px; vertical-align: top;" width="67" height="30"></canvas></div>
+                                </li>
+			        <h1 class="box-data">{{ returnData['hitsIPhone'] | safe }}</h3>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info" >
+                            <h3 class="box-title">From PC</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"><canvas style="display: inline-block; width: 67px; height: 30px; vertical-align: top;" width="67" height="30"></canvas></div>
+                                </li>
+			        <h1 class="box-data" >{{ returnData['hitsBrowser'] | safe }}</h3>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+	</br>
+          </br>
+
+
+	<div class="graphContainer" >
+	<div class="graphHead text-uppercase" > User interactivity graph</div>
+
+	<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+	</div>
+
+	</br>
+          </br>
+	<script src="/static/canvasjs.min.js"></script>
+	<div class="graphContainer" >
+        <div class="graphHead text-uppercase" > User type</div>
+	<div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+	</div>
+
+       </div>
+      </div>
+    </header>
+
+
+{% endblock %}
+

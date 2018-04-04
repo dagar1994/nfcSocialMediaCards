@@ -1,0 +1,167 @@
+{% extends "headers.html" %}
+{% block content %}
+
+<style>
+
+.cropper-crop-box, .cropper-view-box {
+    border-radius: 50%;
+}
+
+.cropper-view-box {
+    box-shadow: 0 0 0 1px #39f;
+    background-color: transparent;
+    outline: 0;
+}
+
+.page {
+	margin: 1em auto;
+	max-width: 768px;
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	height: 100%;
+}
+
+.box {
+	padding: 0.5em;
+	width: 100%;
+	margin:0.5em;
+}
+
+
+.options label,
+.options input{
+	width:4em;
+	padding:0.5em 1em;
+}
+
+/*.btn{
+	background:white;
+	color:black;
+	border:1px solid black;
+	padding: 0.5em 1em;
+	text-decoration:none;
+	margin:0.8em 0.3em;
+	display:inline-block;
+	cursor:pointer;
+}
+*/
+.hide {
+	display: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+
+</style>
+
+
+<header class="masthead">
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-heading"> {{ cardID }} </div>
+           <form action="" method="POST" enctype="multipart/form-data">
+		
+                <div class="col-md-6" style="margin: 0px auto">
+
+
+
+		<div class="form-group">
+			<div class="emptyImage">
+               			<img class="imageContainer rounded-circle" src="{{ imageUrl }}" onerror="this.onerror=null;this.src='/uploads/cloud-2044823_640.png';" alt="Upload Image" name="cropped" style="border-radius: 50%;" >
+			</div>
+			<div class="box-2">
+                                <div class="result hide" ></div>
+                        </div>
+			<div class="box-2 img-result hide" style="border-radius: 50%;">
+                                <!-- result of crop -->
+                                <img class="cropped rounded-circle" src="" alt="" name="cropped" style="border-radius: 50%;">
+                        </div>
+
+
+		</div>
+
+		<div class="form-group">
+		<input class="imageContain hide" name="imageContain" id="name" type="text" placeholder="Name *" value="{{ imageUrl }}">	
+		</div>
+		<div class="form-group">
+		<input class="croppedImage hide" name="croppedImage" id="name" type="text" placeholder="Name *" value="">	
+
+		</div>
+                <div class="form-group">
+                        <div class="box">
+                                <div class="options hide" style="display: none;">
+                                        <label> Width</label>
+                                        <input type="number" class="img-w" value="300" min="100" max="1200" />
+                                </div>
+                                <!-- save btn -->
+                                <button class="btn save btn-primary btn-xl text-uppercase hide" style="width: 250px;">Save</button>
+                                <!-- download btn -->
+                                <a href="" style="width: 250px;" class="btn btn-primary btn-xl text-uppercase download hide">Download</a>
+                        </div>
+
+                </div>
+
+
+		<div class="form-group">
+                        <div class="box">
+                                <input type="file" id="file-input" style="display: none;" name="file-input" accept="image/*">
+                                <input type="button" id="uploadButton" style="width: 250px;" value="UPLOAD IMAGE" class="btn uploadButton btn-primary btn-xl text-uppercaseuploadButton" onclick="document.getElementById('file-input').click();" />
+                        </div>
+
+
+                </div>
+
+
+
+
+		<div class="form-group">
+                    <input class="form-control" value="{{ name }}" name="name" id="name" type="text" placeholder="Name *" required data-validation-required-message="Please enter your name.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+
+		<div class="form-group">
+                    <input class="form-control" id="shortMessage" value ="{{ shortDesc }}" name="shortMessage" type="text" placeholder="Short message * [Max 25 characters] " maxlength="25" required data-validation-required-message="Please enter a short message for the viewers.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+
+		{% if "youtube" in ftype %}	
+			<div class="form-group">
+			  <select name="contentType" class="form-control" id="contentType" data-style="btn btn-primary btn-xl"  >
+			    <option selected  hidden> {{ contentType }}</option>
+			    <option>User</option>
+			    <option>Channel</option>
+			    <option>Video</option>
+			  </select>		
+			</div>
+		  {% endif %}
+
+
+		<div class="form-group">
+                    <input class="form-control" id="snapchatUserName" name="snapchatUserName"  value="{{ userName }}" type="text" placeholder="UserName of {{ scheme }} *" required data-validation-required-message="Please enter a valid {{ scheme }} url">
+                    <p class="help-block text-danger"></p>
+                  </div>
+		 
+
+
+                  <div id="success"></div>
+                  <button style="width: 250px;" id="addUserButton" class="btn btn-primary btn-xl text-uppercase" type="submit">{{ buttonText }}</button>
+
+</form>
+        </div>
+      </div>
+    </header>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
